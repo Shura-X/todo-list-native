@@ -72,8 +72,6 @@ header {
 #list {
 	padding-left: 0;
 	margin-left: 20px;
-
-	transition: 1s;
 }
 
 #list li {
@@ -117,4 +115,26 @@ for pointerdown event*/
 	border-color: white;
 	color: white;
 	background-color: #76e329;
+}
+
+/*this is for fading/emerging notes in the list*/
+@keyframes fading {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		transform: translate(50px);
+		opacity: 0;
+	}
+}
+
+@keyframes emerging {
+	0% {
+		opacity: 0;
+		transform: translate(50px);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0px);
+	}
 }

@@ -2,9 +2,6 @@ const prompt = document.querySelector('#search input');
 const add = document.querySelector('#search button');
 const list = document.querySelector('#list');
 
-//array, with every elem as note for the list
-//let notes = [];
-
 
 const add_elem = function() {
 	const text = prompt.value;
@@ -26,6 +23,9 @@ const add_elem = function() {
 	note.append(p);
 	note.append(btn);
 
+	note.style = `
+		animation: emerging .5s;
+		animation-fill-mode: backwards`;
 	list.append(note);
 
 	prompt.value = '';
@@ -40,7 +40,7 @@ const on_pointer_down = function(event) {
 	}
 }
 
-//func, adding/removing notes and corresponding dom-elems
+//func, adding/removing notes
 const on_pointer_up = function(event) {
 	//toggles highlighting
 	const elem = event.target;
@@ -55,22 +55,25 @@ const on_pointer_up = function(event) {
 
 	//remove note if it's 'remove' button
 	if ( elem.className.search('remove') > -1 ) {
-		elem.parentElement.remove();
+		elem.parentElement.style = `
+			animation: fading .5s;
+			animation-fill-mode: forwards;`;
+		setTimeout( () => elem.parentElement.remove(), 500 );
 	}
 }
 
-//the func processes adding elems via etner
+//the func processes adding notes via etner
 const on_key_down = function(event) {
 	if (event.code !== 'Enter') return;
 	add_elem();
 }
 
-//removes notes- and dom-elems
+//removes notes
 const on_remove = function(event) {
 
 }
 
-//adds notes- and dom-elems
+//adds notes
 const on_add = function(event) {
 
 }
@@ -81,7 +84,7 @@ document.addEventListener('pointerup', on_pointer_up);
 document.addEventListener('keydown', on_key_down);
 
 /*custom events:
--remove - removes element from notes and corresponding dom-elem
--add - adds elem to notes and inserts corresponding dom-elem*/
+-remove - removes notes
+-add - adds notes*/
 document.addEventListener('remove', on_remove);
 document.addEventListener('add', on_add);
