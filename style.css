@@ -1,3 +1,9 @@
+/*color list:;
+green - #76e329
+black - #3d3d3d
+light-grey - #b5b5b5
+*/
+
 html, body {
 	margin: 0px;
 	width: 100%;
@@ -49,6 +55,10 @@ header {
 	outline: none;
 }
 
+.btn:hover {
+	border-color: #76e329;
+}
+
 #search {
 	display: flex;
 }
@@ -77,6 +87,10 @@ header {
 	color: #3d3d3d;	
 }
 
+#list li:not(:last-child) {
+	margin-bottom: 8px;
+}
+
 #list p {
 	margin: 0;
 	margin-right: 0.75em;
@@ -92,4 +106,13 @@ header {
 	top: calc(50% - 0.25em);
 	left: 0;
 	border-radius: 50%;
+}
+
+
+/*this class is attributed to elems that are target
+for pointerdown event*/
+.down {
+	border-color: white;
+	color: white;
+	background-color: #76e329;
 }
