@@ -23,11 +23,17 @@ const add_elem = function() {
 	note.append(p);
 	note.append(btn);
 
-	note.style = `
+	//animation via pure JS & CSS
+	/*note.style = `
 		animation: emerging .5s;
-		animation-fill-mode: backwards`;
-	list.append(note);
+		animation-fill-mode: backwards`;*/
 
+	//animation via animate.css
+	note.className = `animate__animated 
+		animate__fadeInRight
+		animate__faster`;
+
+	list.append(note);
 	prompt.value = '';
 }
 
@@ -55,9 +61,13 @@ const on_pointer_up = function(event) {
 
 	//remove note if it's 'remove' button
 	if ( elem.className.search('remove') > -1 ) {
-		elem.parentElement.style = `
+		//fading with pure JS & CSS
+		/*elem.parentElement.style = `
 			animation: fading .5s;
-			animation-fill-mode: forwards;`;
+			animation-fill-mode: forwards;`;*/
+		elem.parentElement.className = `animate__animated
+			animate__fadeOutRight
+			animate__faster`;
 		setTimeout( () => elem.parentElement.remove(), 500 );
 	}
 }
@@ -68,23 +78,7 @@ const on_key_down = function(event) {
 	add_elem();
 }
 
-//removes notes
-const on_remove = function(event) {
-
-}
-
-//adds notes
-const on_add = function(event) {
-
-}
-
 
 document.addEventListener('pointerdown', on_pointer_down);
 document.addEventListener('pointerup', on_pointer_up);
 document.addEventListener('keydown', on_key_down);
-
-/*custom events:
--remove - removes notes
--add - adds notes*/
-document.addEventListener('remove', on_remove);
-document.addEventListener('add', on_add);
