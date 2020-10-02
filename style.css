@@ -72,6 +72,8 @@ header {
 #list {
 	padding-left: 0;
 	margin-left: 20px;
+
+	transition: 1s;
 }
 
 #list li {

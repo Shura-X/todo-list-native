@@ -48,9 +48,14 @@ const on_pointer_up = function(event) {
 		event.target.classList.toggle('down');
 	}
 
-	//adds note if its 'add' button
+	//adds note if it's 'add' button
 	if ( elem.className.search('add') > -1 ) {
 		add_elem();
+	}
+
+	//remove note if it's 'remove' button
+	if ( elem.className.search('remove') > -1 ) {
+		elem.parentElement.remove();
 	}
 }
 
